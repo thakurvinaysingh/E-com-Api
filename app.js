@@ -31,7 +31,9 @@ app.use((req, res, next) => {
     next();
   });
 
-
+  app.get('/', (req, res) => {
+    res.send('API is up and running!');
+  });
 //------------router handler----------------------//
 
 const categoryRoutes = require('./routers/category');
@@ -43,8 +45,8 @@ app.use('/supercategory', supercategoryRoutes);
 const productsRoutes = require('./routers/product');
 app.use('/product', productsRoutes);
 
-const UserRoutes = require('./routers/User');
-app.use('/', UserRoutes);
+// const UserRoutes = require('./routers/User');
+// app.use('/', UserRoutes);
 
 const CartRoutes = require('./routers/cart');
 app.use('/cart', CartRoutes);
