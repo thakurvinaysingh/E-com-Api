@@ -23,17 +23,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Add a middleware to handle errors and set a custom timeout
-app.use((req, res, next) => {
-    const customTimeout = 30000; // Set a custom timeout in milliseconds (e.g., 30 seconds)
-    res.setTimeout(customTimeout, () => {
-      res.status(504).send('Request timed out');
-    });
-    next();
-  });
+// app.use((req, res, next) => {
+//     const customTimeout = 30000; // Set a custom timeout in milliseconds (e.g., 30 seconds)
+//     res.setTimeout(customTimeout, () => {
+//       res.status(504).send('Request timed out');
+//     });
+//     next();
+//   });
 
-  app.get('/', (req, res) => {
-    res.send('API is up and running!');
-  });
+//   app.get('/user1', (req, res) => {
+//     res.send('API is up and running!');
+//   });
 //------------router handler----------------------//
 
 const categoryRoutes = require('./routers/category');
@@ -45,8 +45,8 @@ app.use('/supercategory', supercategoryRoutes);
 const productsRoutes = require('./routers/product');
 app.use('/product', productsRoutes);
 
-// const UserRoutes = require('./routers/User');
-// app.use('/', UserRoutes);
+const UserRoutes = require('./routers/User');
+app.use('/', UserRoutes);
 
 const CartRoutes = require('./routers/cart');
 app.use('/cart', CartRoutes);
@@ -65,6 +65,7 @@ app.use('/shipping', ShippingRoutes);
 //------------------mpongoose Database--------------//
 
 // mongoose.connect("mongodb://127.0.0.1:27017/NewEcommerce")
+// mongodb+srv://vinaysingh5497:<password>@cluster0.lac7pmr.mongodb.net/?retryWrites=true&w=majority
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log('mongoose connected');
