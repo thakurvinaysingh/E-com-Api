@@ -12,11 +12,7 @@
         "src": "/(.*)",
         "dest": "/app.js"
       }
-    ],
-    "functions": {
-      "api/**/*.js": {
-        "maxDuration": 10
-      }
-    }
+    ]
+   
   }
    
