@@ -22,7 +22,14 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// Add a middleware to handle errors and set a custom timeout
+app.use((req, res, next) => {
+    const customTimeout = 30000; // Set a custom timeout in milliseconds (e.g., 30 seconds)
+    res.setTimeout(customTimeout, () => {
+      res.status(504).send('Request timed out');
+    });
+    next();
+  });
 
 
 //------------router handler----------------------//
