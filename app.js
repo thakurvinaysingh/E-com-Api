@@ -30,7 +30,7 @@ app.use(session({
 //--middleware----//
 app.use(cors());
 // app.use(express.static('public'));
-app.use('/images',express.static('public/uploads/'));
+app.use('/images',express.static('public/uploads'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
