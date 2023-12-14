@@ -63,7 +63,7 @@ app.use('/shipping', ShippingRoutes);
 
 
 //------------------mpongoose Database--------------//
-
+//mongodb+srv://vinaysingh5497:ZwppY7HwB7uEzu7h@cluster0.lac7pmr.mongodb.net/?retryWrites=true&w=majority
 // mongoose.connect("mongodb://127.0.0.1:27017/NewEcommerce")
 // mongodb+srv://vinaysingh5497:<password>@cluster0.lac7pmr.mongodb.net/?retryWrites=true&w=majority
 mongoose.connect(process.env.MONGO_URL)

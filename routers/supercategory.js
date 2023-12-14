@@ -37,9 +37,10 @@ router.post('/', uploadOptions.single('image'), async (req, res) => {
             return res.status(400).json({ success: false, message: "No image Found" })
         }
         const fileName = file.filename
-        const basePath = `${req.protocol}://${req.get('host')}/`;
+        const basePath = `${req.protocol}://${req.get('host')}/uploads/`;
         //checking duplicated name //
         const existingSupercategory = await Supercategory.findOne({ name: req.body.name.toLowerCase() })
+        console.log(`${basePath}${fileName}`);
 
         if (existingSupercategory) {
             return res.status(422).json({ success: false, message: `This super-category "${req.body.name}" is already exists` });
@@ -49,7 +50,7 @@ router.post('/', uploadOptions.single('image'), async (req, res) => {
             name: req.body.name.toLowerCase(),
             image: `${basePath}${fileName}`,
         })
-       // console.log(${basePath}${fileName})
+       
         supercategory = await supercategory.save();
         if (!supercategory) {
             return res.status(422).json({ success: false, message: "SuperCategory is not Created!" })
