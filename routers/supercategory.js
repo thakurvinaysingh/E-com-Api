@@ -56,7 +56,8 @@ router.post('/', uploadOptions.single('image'), async (req, res) => {
             return res.status(422).json({ success: false, message: "SuperCategory is not Created!" })
         }
         res.status(200).json({ success: true, message: "Successfully Created SuperCategory", Data: supercategory })
-
+        console.log('File received:', fileName);
+        console.log('Base path:', basePath);
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: "Internal Server Error" })
